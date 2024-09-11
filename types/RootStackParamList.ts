@@ -8,4 +8,4 @@ type RootStackParamList = {
     DetailTodo: { item: taskDef };
 };
 
-export default RootStackParamList;
+export { RootStackParamList, taskDef };

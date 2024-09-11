@@ -1,10 +1,11 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import { NavigationContainer } from "@react-navigation/native";
+// import { createDrawerNavigator } from "@react-navigation/drawer";
+// import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "../home";
 import DetailTodo from "../detailTodo";
 import About from "../AboutMe";
-
+import TabBar from "./tabBar";
 const HomeLayout = () => {
   const Stack = createNativeStackNavigator();
   return (
@@ -16,12 +17,13 @@ const HomeLayout = () => {
 };
 
 const DrawerLayout = () => {
-  const Drawer = createDrawerNavigator();
+  // const Drawer = createDrawerNavigator();
+  const Tab = createBottomTabNavigator();
   return (
-    <Drawer.Navigator>
-      <Drawer.Screen name="Home1" component={HomeLayout} />
-      <Drawer.Screen name="About" component={About} />
-    </Drawer.Navigator>
+    <Tab.Navigator tabBar={(props) => <TabBar {...props} />}>
+      <Tab.Screen name="Home" component={HomeLayout} />
+      <Tab.Screen name="About" component={About} />
+    </Tab.Navigator>
   );
 };
 

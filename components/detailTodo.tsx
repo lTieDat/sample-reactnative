@@ -4,7 +4,7 @@ import {
   useNavigation,
   useRoute,
 } from "@react-navigation/native";
-import RootStackParamList from "../types/RootStackParamList";
+import { RootStackParamList } from "../types/RootStackParamList";
 interface taskDef {
   id: number;
   task: string;
@@ -15,17 +15,21 @@ const DetailTodo = () => {
   const route = useRoute();
   const { item } = route.params as { item: taskDef };
   return (
-    <View>
-      <Text>Detail Todo</Text>
-      <Text>{item.id}</Text>
-      <Text>{item.task}</Text>
-      <Button
-        title="Back to Home"
-        onPress={() => {
-          navigation.navigate("Home");
-        }}
-      />
-    </View>
+    <>
+      <View>
+        <Text>Detail Todo</Text>
+        <Text>ID : {Math.floor(item.id * 1000)}</Text>
+        <Text>Task : {item.task}</Text>
+      </View>
+      <View>
+        <Button
+          title="Back"
+          onPress={() => {
+            navigation.goBack();
+          }}
+        />
+      </View>
+    </>
   );
 };
 

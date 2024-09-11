@@ -12,12 +12,7 @@ import {
   Keyboard,
 } from "react-native";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
-import RootStackParamList from "../types/RootStackParamList";
-
-interface taskDef {
-  id: number;
-  task: string;
-}
+import { RootStackParamList, taskDef } from "../types/RootStackParamList";
 
 export default function Home() {
   const [task, setTask] = useState<taskDef[]>([]);
@@ -44,8 +39,8 @@ export default function Home() {
         Keyboard.dismiss();
       }}
     >
-      <View>
-        <View style={styles.container}>
+      <View style={styles.container}>
+        <View style={styles.inputContainer}>
           <Text nativeID="formLabel" style={styles.header}>
             Label for Input Field
           </Text>
@@ -60,7 +55,6 @@ export default function Home() {
           <Text>List of Task</Text>
           <FlatList
             data={task}
-            style={styles.FlatList}
             renderItem={({ item }) => {
               return (
                 <TouchableOpacity onPress={() => handleNavigate(item)}>
@@ -78,11 +72,13 @@ export default function Home() {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 50,
-    backgroundColor: "#fff",
+    flex: 1,
+    padding: 20,
+  },
+  inputContainer: {
+    marginBottom: 20,
   },
   header: {
-    backgroundColor: "#fff",
     paddingHorizontal: 20,
     textAlign: "center",
   },
@@ -93,22 +89,15 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   listTasks: {
-    paddingHorizontal: 20,
-  },
-  button: {
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    borderRadius: 5,
+    flex: 1,
+    marginBottom: 100,
   },
   task: {
     padding: 10,
     backgroundColor: "pink",
     borderBottomWidth: 1,
-    fontSize: 30,
+    fontSize: 20,
     borderWidth: 1,
-    margin: 10,
-  },
-  FlatList: {
-    marginBottom: 20,
+    marginVertical: 5,
   },
 });
